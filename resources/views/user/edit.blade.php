@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('adminlte::page')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ユーザー情報編集</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+@section('title', '商品一覧')
 
-</head>
+@section('content_header')
+    <h1>ユーザー情報編集</h1>
+@stop
 
-<body>
-@include('includes.header')
+@section('content')
   <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-4">
@@ -49,4 +44,10 @@
 
             </div>
           </div>
-</body>
+          @stop
+
+@section('css')
+@stop
+
+@section('js')
+@stop

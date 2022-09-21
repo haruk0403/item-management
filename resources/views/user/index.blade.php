@@ -1,17 +1,12 @@
-<!DOCTYPE html>
+@extends('adminlte::page')
 
-<html lang="ja">
+@section('title', '商品一覧')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ユーザー一覧</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+@section('content_header')
+    <h1>ユーザー一覧</h1>
+@stop
 
-<body>
-    <h1 class="fs-1 mt-5 mb-5 text-center">ユーザー一覧</h1>
+@section('content')
       <!-- Page Content -->
     <div class="container mt-5">
       <div class="row justify-content-center">
@@ -20,7 +15,6 @@
         <form method="get" action="/user" class="form-inline">
             <div class="form-group">
                 <input type="text" name="keyword" class="form-control-sm"  placeholder="検索キーワード" value="{{$keyword}}">
-                <input type="submit" value="検索" class="btn btn-info" style="margin-left: 5px; color:white;">
             </div>
         
             <div class="form-check form-check-inline">
@@ -31,6 +25,9 @@
               <input class="form-check-input" type="radio" name="role" value="1" {{$role ==1 ? "checked" : ""}}>
               <label class="form-check-label">利用者</label>
             </div> 
+            <div>
+            <input type="submit" value="検索" class="btn btn-info" style="margin-left: 5px; color:white;">
+            </div>
             </form>
          </div>
           <table class="table table-striped">
@@ -63,4 +60,10 @@
           </div>
         </div>
   </div>
-</body>
+  @stop
+
+@section('css')
+@stop
+
+@section('js')
+@stop
