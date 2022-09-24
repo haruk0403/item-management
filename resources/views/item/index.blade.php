@@ -12,6 +12,14 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">商品一覧</h3>
+                    <!-- 検索機能ここから -->
+                    <div>
+                         <form action="/items/search" method="get" value="">
+                            <input type="text" class="form-control-sm" placeholder="商品名を入力してください" name="keyword" value="">
+                             <input type="submit" class="btn btn-outline-success" value="検索">
+                         </form>
+                     </div>
+                         <!-- 検索機能ここまで -->
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">

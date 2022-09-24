@@ -31,6 +31,28 @@ class ItemController extends Controller
 
         return view('item.index', compact('items'));
     }
+    /**
+     * 商品検索
+     */
+    public function item(Request $request)
+    {
+        $message = null;
+        $item = [];
+
+        if (isset($request->keyword )) {
+            $item = Item::where('name', 'like', '%' . $request->keyword . '%')->orderBy('id','asc')->paginate(10);
+            if(count($item)==0){
+                $message = "検索結果はありません。";
+            }
+        }
+        else {
+            $item = Item::orderBy('id','asc')->paginate(10);
+        }
+        return view('item.search')->with([
+            'item' => $item,
+            'message'=>$message
+        ]);
+    }
 
     /**
      * 商品登録
