@@ -45,6 +45,7 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td><a href="{{ route('item.edit', ['id'=>$item]) }}" class="btn btn btn-outline-primary">>>編集</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

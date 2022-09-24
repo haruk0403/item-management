@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Http\Requests\ItemEditRequest;
 
 class ItemController extends Controller
 {
@@ -79,4 +80,25 @@ class ItemController extends Controller
 
         return view('item.add');
     }
+
+     //商品編集画面の表示
+     public function edit($id)
+     {
+         $item = Item::find($id);
+         return view('item.edit', compact('item'));
+     }
+ 
+     //商品情報更新
+     public function postEdit($id, ItemEditRequest $request)
+     {
+         $item = Item::find($id);
+             
+         $item->name = $request->name;
+         $item->type = $request->type;
+         $item->detail = $request->detail;
+         $item->save();
+     
+         //ユーザー一覧へリダイレクト
+         return redirect()->to('items');
+     }
 }
