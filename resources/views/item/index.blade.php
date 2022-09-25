@@ -7,15 +7,14 @@
 @stop
 
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
                     <!-- 検索機能ここから -->
                     <div>
                          <form action="/items/search" method="get" value="">
-                            <input type="text" class="form-control-sm" placeholder="商品名を入力してください" name="keyword" value="">
+                            <input type="text" class="form-control-sm" placeholder="商品名を入力" name="keyword" value="">
                              <input type="submit" class="btn btn-outline-success" value="検索">
                          </form>
                      </div>
@@ -29,12 +28,12 @@
                     </div>
                 </div>
                 <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                <table class="table table-striped">                        
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>名前</th>
-                                <th>種別</th>
+                                <th>カテゴリ</th>
                                 <th>詳細</th>
                             </tr>
                         </thead>
@@ -46,6 +45,9 @@
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
                                     <td><a href="{{ route('item.edit', ['id'=>$item]) }}" class="btn btn btn-outline-primary">>>編集</a></td>
+                                    <td><form action="{{ route('item.destroy', ['id'=>$item->id]) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">削除</button></form></td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -33,7 +33,7 @@ class ItemEditRequest extends FormRequest
     {
         return[
             'name.required' => '名前は必ず入力してください',
-            'type.required' => '種別は必ず入力してください',
+            'type.required' => 'カテゴリは必ず入力してください',
         ];
     }
 }

@@ -56,8 +56,27 @@ class ItemController extends Controller
     }
 
     /**
+        * 商品削除
+        *
+        */
+        public function destroy($id)
+        {
+            // Itemsテーブルから指定のIDのレコード1件を取得
+            $item = Item::find($id);
+            // レコードを削除
+            $item->delete();
+            // 削除したら一覧画面にリダイレクト
+            return redirect('/items');
+        }
+
+    /**
      * 商品登録
      */
+    public function register()
+    {
+        $type = item::TYPE;
+        return view('item.add', compact('type'));
+    }
     public function add(Request $request)
     {
         // POSTリクエストのとき
@@ -74,31 +93,31 @@ class ItemController extends Controller
                 'type' => $request->type,
                 'detail' => $request->detail,
             ]);
-
             return redirect('/items');
         }
-
-        return view('item.add');
+            $type = item::TYPE;
+            return view('item.add',compact('type'));
     }
 
      //商品編集画面の表示
      public function edit($id)
      {
          $item = Item::find($id);
-         return view('item.edit', compact('item'));
+         $type = item::TYPE;
+         return view('item.edit', compact('type'))->with([
+             'item' => $item,
+            ]);
      }
  
      //商品情報更新
      public function postEdit($id, ItemEditRequest $request)
      {
-         $item = Item::find($id);
-             
-         $item->name = $request->name;
-         $item->type = $request->type;
-         $item->detail = $request->detail;
-         $item->save();
-     
-         //ユーザー一覧へリダイレクト
+        $item = Item::find($request->id);
+        $item->name = $request->name;
+        $item->type = $request->type;
+        $item->detail = $request->detail;
+        $item->save();
+         //商品一覧へリダイレクト
          return redirect()->to('items');
      }
 }

@@ -8,9 +8,10 @@
 
 @section('content')
       <!-- Page Content -->
-    <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-xs-5-" style="padding-left:0;">
+      <div class="card">
+        <div class="row justify-content-center">
+          <div class="col-12">
+          <div class="card-header">
         <!-- 検索フォーム -->
         <form method="get" action="/user" class="form-inline">
             <div class="form-group">
@@ -26,10 +27,11 @@
               <label class="form-check-label">利用者</label>
             </div> 
             <div>
-            <input type="submit" value="検索" class="btn btn-info" style="margin-left: 5px; color:white;">
+            <input type="submit" value="検索" class="btn btn-outline-success">
             </div>
             </form>
          </div>
+        </div>
           <table class="table table-striped">
             <thead>
               <tr>

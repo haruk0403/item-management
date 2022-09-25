@@ -23,8 +23,16 @@
                   @if ($errors->has('name'))
                   <div class="alert alert-warning s-2" role="alert"> {{ $errors->first('name')}}</div>
                   @endif
-                  <p>種別</p>
-                   <input type="text" name="type" value="{{ old('type',$item->type) }}" />
+                  <p>カテゴリ<select class="form-control" id="type" name="type">
+                                    @foreach($type as $t)
+                                    @if($t == $item->type)
+                                    <option value="{{$t}}" selected>{{$t}}</option>
+                                    @else
+                                    <option value="{{$t}}">{{$t}}</option>
+                                    @endif
+                                    @endforeach
+                                </select></p>
+
                   @if ($errors->has('type'))
                   <div class="alert alert-warning s-2" role="alert"> {{ $errors->first('type')}} </div>
                   @endif
