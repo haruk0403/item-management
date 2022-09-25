@@ -32,7 +32,9 @@ Route::prefix('items')->group(function () {
     Route::post('edit/{id}', [App\Http\Controllers\ItemController::class,'postEdit'])->name('items.postEdit');
     Route::post('postEdit',[\App\Http\Controllers\ItemController::class,'postEdit'])->name('postEdit');
 });
+Route::group(['middleware' => ['auth', 'can:Admin']], function () {
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user');
 Route::get('/user/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/edit/{id}', [App\Http\Controllers\UserController::class,'postEdit'])->name('users.postEdit');
 Route::post('/user/postEdit',[\App\Http\Controllers\UserController::class,'postEdit'])->name('postEdit');
+});

@@ -27,7 +27,7 @@
               <label class="form-check-label">利用者</label>
             </div> 
             <div>
-            <input type="submit" value="検索" class="btn btn-outline-success">
+            <input type="submit" value="検索" class="btn btn-success">
             </div>
             </form>
          </div>
@@ -48,7 +48,7 @@
                <td>{{ $user->id }}</td>
                <td>{{ $user->name }}</td>
                <td>{{ $user->email }}</td>
-                <td>@if($user->role ==2)管理者
+               <td>@if($user->role ==2)管理者
                  @else 利用者
                 @endif
                </td>

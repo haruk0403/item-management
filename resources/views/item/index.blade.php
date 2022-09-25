@@ -15,7 +15,7 @@
                     <div>
                          <form action="/items/search" method="get" value="">
                             <input type="text" class="form-control-sm" placeholder="商品名を入力" name="keyword" value="">
-                             <input type="submit" class="btn btn-outline-success" value="検索">
+                             <input type="submit" class="btn btn-success" value="検索">
                          </form>
                      </div>
                          <!-- 検索機能ここまで -->
@@ -45,9 +45,11 @@
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
                                     <td><a href="{{ route('item.edit', ['id'=>$item]) }}" class="btn btn btn-outline-primary">>>編集</a></td>
+                                    @if($user->role == 2)
                                     <td><form action="{{ route('item.destroy', ['id'=>$item->id]) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-outline-danger btn-sm">削除</button></form></td>
+                                    <button type="submit" class="btn btn-danger btn-sm">削除</button></form></td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>

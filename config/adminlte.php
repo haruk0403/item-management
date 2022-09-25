@@ -228,12 +228,14 @@ return [
         [
             'text' => '商品一覧',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-tags',
         ],
         [
+            
             'text' => 'ユーザー一覧',
             'url'  => 'user',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas  fa-users',
+            'can' => 'Admin',
         ],
 
         // AdminLTEデフォルト

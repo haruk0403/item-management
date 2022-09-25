@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Http\Requests\ItemEditRequest;
-
 class ItemController extends Controller
 {
     /**
@@ -29,8 +28,8 @@ class ItemController extends Controller
             ::where('items.status', 'active')
             ->select()
             ->get();
-
-        return view('item.index', compact('items'));
+            $user = Auth::user();
+        return view('item.index', compact('items','user'));
     }
     /**
      * 商品検索
