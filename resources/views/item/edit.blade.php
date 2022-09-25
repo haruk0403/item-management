@@ -38,8 +38,10 @@
                   @endif
                   <p>詳細</p>
                   <input type="text" name="detail" value="{{ old('detail',$item->detail) }}" />
+                  <div class="btn-toolbar">
                   <input class="btn btn-primary" type="submit" value="更新">
                   <a href="/items/" class="btn btn-outline-primary">商品一覧に戻る</a>
+                  </div>
                 </form>
               </div>
             </div>

@@ -27,13 +27,15 @@
                             <label for="name">名前</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="名前">
                         </div>
-
-                        <p>カテゴリ<select class="form-select" id="type" name="type">
+                            <div class="form-group">
+                            <label for="type">カテゴリ</label>
+                                <select class="form-select" id="type" name="type">
                                     <option value="">選択されていません</option>
                                     @foreach($type as $type)
                                     <option value="{{$type}}" @if(old('type')==$type ) selected @endif>{{$type}}</option>
                                     @endforeach
-                                </select></p>
+                                </select>
+                            </div>
                         <div class="form-group">
                             <label for="detail">詳細</label>
                             <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
