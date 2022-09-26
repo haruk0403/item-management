@@ -14,16 +14,23 @@ class UserController extends Controller
         $keyword = $request->input('keyword');
         $role = $request->role;
         $query = User::query();
+        //キーワードがあって権限があった場合
+        //キーワードがあって権限がなかった場合
         if(!empty($keyword))
             {
-                $query->where('email','like','%'.$keyword.'%');
-                $query->orWhere('name','like','%'.$keyword.'%');
-            
+                if(!empty($role)){
+                    $query->where('email','like','%'.$keyword.'%')->where('role','=',$role)->orWhere('name','like','%'.$keyword.'%')->where('role','=',$role);
+                }else{
+                    $query->where('email','like','%'.$keyword.'%')->orWhere('name','like','%'.$keyword.'%');
+                }
             }
-        if(!empty($role))
-        {
-            $query->Where('role','like','%'.$role.'%');
-        }
+            else{
+                    //キーワードがなくて権限があった場合
+                     //キーワードがなくて権限がない場合
+                    if(!empty($role)){
+                        $query->Where('role','like','%'.$role.'%');
+                    }
+            }
         // 全件取得 +ページネーション
         $users = $query->orderBy('id','asc')->paginate(10);
         return view('user.index')->with('users',$users)->with('keyword',$keyword)->with('role',$role);
