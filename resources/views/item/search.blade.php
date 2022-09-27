@@ -18,7 +18,6 @@
                     <th>商品id</th>
                     <th>商品名</th>
                     <th>カテゴリ</th>
-                    <th>ステータス</th>
                     <th>更新日時</th>
                     <th></th>
                 </tr>
@@ -30,14 +29,9 @@
                     <td>{{$value->id}}</td>
                     <td>{{$value->name}}</td>
                     <td>{{$value->type}}</td>
-                    <td>@if($value->status == 1)有効
-                        @else 無効
-                        @endif
-                    </td>
                     <td>{{$value->updated_at}}</td>
                     <td>
-                        <a href="/item/edit/{{$value->id}}" class="btn btn-primary">>>編集</a>
-                        </form>
+                    <a href="{{ route('item.edit', ['id'=>$item]) }}" class="btn btn btn-outline-primary">>>編集</a>
                     </td>
                 </tr>
                 @endforeach
